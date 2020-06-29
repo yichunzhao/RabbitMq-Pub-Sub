@@ -6,7 +6,7 @@ import java.util.concurrent.CountDownLatch;
 
 @Component
 public class Subscriber {
-    private CountDownLatch latch = new CountDownLatch(1);
+    private CountDownLatch latch = new CountDownLatch(3);
 
     public void receiveMessage(String message) {
         System.out.println("Received:  " + message);

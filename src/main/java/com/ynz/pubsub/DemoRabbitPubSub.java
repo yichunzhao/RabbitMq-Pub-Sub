@@ -14,8 +14,8 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DemoRabbitPubSub {
-    static final String topicExchangeName = "order";
-    static final String queueName = "TestQueue";
+    static final String topicExchangeName = "spring-boot-exchange";
+    static final String queueName = "MyAnotherQueue";
     static final String routingKey ="order";
 
     public static void main(String[] args) {
