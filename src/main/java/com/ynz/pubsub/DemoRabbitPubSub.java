@@ -22,19 +22,36 @@ public class DemoRabbitPubSub {
         ConfigurableApplicationContext context = SpringApplication.run(DemoRabbitPubSub.class, args);
     }
 
+    /**
+     * Define a message Queue on the Rabbit MQ sever.
+     * @return Queue
+     */
     @Bean
     Queue queue() {
         return new Queue(queueName, false);
     }
 
+    /**
+     * Define the exchange to use.
+     * @return TopicExchange
+     */
     @Bean
     TopicExchange exchange() {
         return new TopicExchange(topicExchangeName);
     }
 
+    /**
+     *  binding the exchange to a queue with a routing key.
+     * @return
+     */
     @Bean
     Binding binding() {
         return BindingBuilder.bind(queue()).to(exchange()).with(routingKey);
+    }
+
+    @Bean
+    MessageListenerAdapter listenerAdapter(Subscriber subscriber) {
+        return new MessageListenerAdapter(subscriber, "receiveMessage");
     }
 
     @Bean
@@ -46,8 +63,4 @@ public class DemoRabbitPubSub {
         return container;
     }
 
-    @Bean
-    MessageListenerAdapter listenerAdapter(Subscriber subscriber) {
-        return new MessageListenerAdapter(subscriber, "receiveMessage");
-    }
 }
