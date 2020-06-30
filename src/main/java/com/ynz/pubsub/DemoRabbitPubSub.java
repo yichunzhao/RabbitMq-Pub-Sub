@@ -42,7 +42,7 @@ public class DemoRabbitPubSub {
 
     /**
      *  binding the exchange to a queue with a routing key.
-     * @return
+     * @return Binding
      */
     @Bean
     Binding binding() {

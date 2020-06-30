@@ -25,5 +25,8 @@ public class Publisher implements CommandLineRunner {
         rabbitTemplate.convertAndSend(DemoRabbitPubSub.topicExchangeName,
                 DemoRabbitPubSub.routingKey, "hello from Rabbit Mq!");
 
+        rabbitTemplate.convertAndSend(DemoRabbitPubSub.topicExchangeName,
+                DemoRabbitPubSub.routingKey, "What we can do?");
+
     }
 }
